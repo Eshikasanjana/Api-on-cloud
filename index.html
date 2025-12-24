@@ -35,13 +35,13 @@
     Loading...
   </div>
 
-  <script>
-    fetch("https://YOUR-RAILWAY-APP-URL/message")
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("photo").src = data.photo;
-        document.getElementById("msg").innerText = data.message;
-      });
-  </script>
+<script>
+  fetch("https://newproject-production-6f42.up.railway.app/message")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("photo").src = data.photo;
+      document.getElementById("msg").innerText = data.message;
+    });
+</script>
 </body>
 </html>

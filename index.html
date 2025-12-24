@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    body {
-      display: flex;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial;
+<style>
+  body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial;
+  }
+
+  .left, .right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+
+  img {
+    max-width: 80%;
+    border-radius: 20px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+
+  .right {
+    font-size: 22px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 2s forwards;
+    animation-delay: 1s;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .left, .right {
-      width: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-    }
-    img {
-      max-width: 80%;
-      border-radius: 20px;
-    }
-    .right {
-      font-size: 22px;
-      text-align: center;
-    }
-  </style>
+  }
+</style>
+
 </head>
 
 <body>
@@ -36,12 +57,16 @@
   </div>
 
 <script>
+  // get message
   fetch("https://newproject-production-6f42.up.railway.app/message")
     .then(res => res.json())
     .then(data => {
       document.getElementById("photo").src = data.photo;
       document.getElementById("msg").innerText = data.message;
     });
+
+  // track opening
+  fetch("https://newproject-production-6f42.up.railway.app/track");
 </script>
 </body>
 </html>
